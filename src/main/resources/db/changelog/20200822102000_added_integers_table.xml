@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="20200822102000-1" author="wysockam">
+        <createTable tableName="integers">
+            <column name="value" type="integer">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="20200822102000-2" author="wysockam">
+        <preConditions>
+            <tableExists tableName="integers"/>
+        </preConditions>
+        <sql>
+            insert into integers(value)
+            VALUES (1), (2), (3), (4), (5), (6), (7);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
